@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Orders from "@/components/Orders";
+import INOrders from "@/components/INOrders";
 import Menus from "@/components/Menus";
 import INsearch from "@/components/INsearch";
 import OUTsearch from "@/components/OUTsearch";
-import Login from "@/components/Login";
+import OUTOrders from "@/components/OUTOrders";
 import UserInfo from "@/components/UserInfo";
+import INAdd from "@/components/INAdd";
+import OUTAdd from "@/components/OUTAdd";
+import Stocks from "@/components/Stocks";
+import Home from "@/views/Home";
 
 
 Vue.use(VueRouter)
@@ -14,45 +18,14 @@ const routes = [
   {
     path:"/",
     name:"首页",
-    redirect:"/搜索入库订单",
-    component:Menus,
+    redirect: "/库存",
+    component: Menus,
     icon:"el-icon-house",
     children:[
       {
-        path:"/基础设置",
-        name:"库存",
-        component:Orders,
-      }
-    ]
-  },
-  {
-    path:"/基础设置",
-    name:"基础设置",
-    component:Menus,
-    icon:"el-icon-house",
-    children:[
-      {
-        path:"/基础设置",
-        name:"库存",
-        component:Orders,
-      }
-    ]
-  },
-  {
-    path:"/入库操作",
-    name:"入库操作",
-    component:Menus,
-    icon:"el-icon-shopping-cart-1",
-    children:[
-      {
-        path:"/管理入库订单",
-        name:"管理入库订单",
-        component:Orders,
-      },
-      {
-        path:"/搜索入库订单",
-        name:"搜索入库订单",
-        component:INsearch,
+        path:"/Dashboard",
+        name:"Dashboard",
+        component:Home,
       }
     ]
   },
@@ -63,19 +36,26 @@ const routes = [
     icon:"el-icon-shopping-cart-1",
     children:[
       {
-        path:"/库存余量",
-        name:"库存余量",
-        component:Orders,
+        path:"/库存",
+        name:"库存",
+        component:Stocks,
       },
+    ]
+  },
+  {
+    path:"/入库操作",
+    name:"入库操作",
+    component:Menus,
+    icon:"el-icon-shopping-cart-1",
+    children:[
       {
-        path: "/库存移动",
-        name: "库存移动",
-        component: INsearch,
-      },
-      {
-        path:"/库存调整",
-        name:"库存调整",
-        component:INsearch,
+        path:"/新建入库订单",
+        name:"新建入库订单",
+        component:INAdd,
+      },{
+        path:"/管理搜索入库订单",
+        name:"搜索/管理入库订单",
+        component:INOrders,
       }
     ]
   },
@@ -86,38 +66,19 @@ const routes = [
     icon:"el-icon-coin",
     children:[
       {
-        path:"/管理出库订单",
-        name:"管理出库订单",
-        component:Orders,
-      },
-      {
-        path:"/搜索出库订单",
-        name:"搜索出库订单",
-        component:OUTsearch,
+        path:"/新建出库订单",
+        name:"新建出库订单",
+        component:OUTAdd,
+      },{
+        path:"/管理搜索出库订单",
+        name:"搜索/管理出库订单",
+        component:OUTOrders,
       }
     ]
   },
   {
-    path:"/新建订单",
-    name:"新建订单",
-    component: Menus,
-    icon:"el-icon-circle-plus-outline",
-    children: [
-      {
-        path: "/新建入库订单",
-        name: "新建入库订单",
-        component: Orders,
-      },
-      {
-        path: "/新建出库订单",
-        name: "新建出库订单",
-        component: Orders,
-      }
-    ]
-  },
-  {
-    path:"/供应商管理",
-    name:"供应商管理",
+    path:"/SKU管理",
+    name:"SKU管理",
     component:Menus,
     icon:"el-icon-user",
     children:[
@@ -170,16 +131,18 @@ const routes = [
       {
         path: "/pageOne",
         name: "page1",
-        component: Orders
+        component: INOrders
       },
       {
         path: "/pageTwo",
         name: "page2",
-        component: Orders
+        component: INOrders
       }
     ]
   }
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',

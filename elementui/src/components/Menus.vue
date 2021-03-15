@@ -1,9 +1,9 @@
 <template>
   <div class="menu">
-    <el-container style="height: 1000px; border: 1px solid #eee">
+    <el-container style="height: 820px; border: 1px solid #eee">
       <el-aside class="aside-menu" width="250px" style="background-color: rgb(238, 241, 246);">
       <el-menu router>
-<!--avatar:-->
+
       <el-row class="demo-avatar demo-basic">
       <el-col :span="12">
         <div class="sub-title"></div>
@@ -46,9 +46,9 @@
       </el-dropdown>
       <span>王小虎 </span>
     </el-header>
-        <el-main class="router-view">
-      <router-view></router-view>
-    </el-main>
+        <el-main>
+            <router-view></router-view>
+        </el-main>
       </el-container>
 
     </el-container>
